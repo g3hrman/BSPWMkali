@@ -34,9 +34,9 @@
     os_icon                 # os identifier
     dir                     # current directory
     vcs                     # git status
-    status
     context
     command_execution_time
+    status
     # prompt_char           # prompt symbol
   )
 
