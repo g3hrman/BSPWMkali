@@ -2,7 +2,7 @@
 
 1.- Uso del Script
 
-https://github.com/xJackSx/BSPWMkali.git
+Realizar un sudo apt update y un sudo apt upgrade
 
 cd BSPWMkali
 
