@@ -20,15 +20,15 @@ window {
     background-color:               @background;
     text-color:                     @foreground;
     border-radius:                  20px;
-    height:                         11.5%;
+    height:                         14.5%;
     width:                          12%;
-    x-offset:                       -30;
+    x-offset:                       -16;
     y-offset:                       70;
 }
 
 prompt {
     enabled: 						true;
-	padding: 						4px 4px 6px 6px;
+	padding: 					4px 4px 6px 6px;
 	background-color: 				@background;
 	text-color: 					@foreground;
 }
@@ -43,13 +43,13 @@ textbox-prompt-colon {
 }
 
 inputbar {
-	children: 						[ textbox-prompt-colon, prompt ];
+    children: 						[ textbox-prompt-colon, prompt ];
     background-color:               @background;
     text-color:                     @foreground;
     expand:                         false;
-    border:                  		0px 0px 1px 0px;
+    border:                         0px 0px 1px 0px;
     border-radius:                  20px;
-    border-color:                  	@border;
+    border-color:                   @border;
     margin:                         0px 0px 0px 0px;
     padding:                        0px 0px 0px 0px;
     position:                       center;
@@ -124,11 +124,11 @@ element alternate.active {
 }
 
 element selected {
-    background-color:               @selected;
+    background-color:               @background;
     text-color:                     @background;
-    border:                  		0px;
+    border:                  	   3px;
     border-radius:                  20px;
-    border-color:                  	@border;
+    border-color:                   @selected;
 }
 
 element selected.urgent {
