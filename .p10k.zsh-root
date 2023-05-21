@@ -35,8 +35,8 @@
     dir                     # current directory
     vcs                     # git status
     status
-    command_execution_time
     context
+    command_execution_time
     # prompt_char           # prompt symbol
   )
 
@@ -886,7 +886,7 @@
   # Custom icon.
   # typeset -g POWERLEVEL9K_CONTEXT_VISUAL_IDENTIFIER_EXPANSION='⭐'
   # Custom prefix.
-  typeset -g POWERLEVEL9K_CONTEXT_PREFIX='%246Fwith '
+  # typeset -g POWERLEVEL9K_CONTEXT_PREFIX='%246Fwith '
 
   ###[ virtualenv: python virtual environment (https://docs.python.org/3/library/venv.html) ]###
   # Python virtual environment color.
