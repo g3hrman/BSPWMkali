@@ -7,7 +7,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Set up the prompt
-
 autoload -Uz promptinit
 promptinit
 prompt adam1
@@ -48,34 +47,33 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
 # Manual configuration
-
 PATH=/root/.local/bin:/snap/bin:/usr/sandbox/:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
 
-# Custom Aliases
-
+# Custom aliases
+alias cat='batcat --paging=never'
+alias catn='/bin/cat'
 alias ll='lsd -lh --group-dirs=first'
 alias la='lsd -a --group-dirs=first'
 alias l='lsd --group-dirs=first'
 alias lla='lsd -lha --group-dirs=first'
 alias ls='lsd --group-dirs=first'
-alias cat='/bin/batcat --paging=never'
-alias catn='cat'
-alias catnl='batcat'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Plugins
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-#source /usr/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source /usr/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+# source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh-sudo/sudo.plugin.zsh
 
 # Functions
+
+# MKT Function
 function mkt(){
 	mkdir {nmap,content,exploits,scripts}
 }
 
-# Extract nmap information
+# Extract Nmap Information
 function extractPorts(){
 	ports="$(cat $1 | grep -oP '\d{1,5}/open' | awk '{print $1}' FS='/' | xargs | tr ' ' ',')"
 	ip_address="$(cat $1 | grep -oP '\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}' | sort -u | head -n 1)"
@@ -87,8 +85,7 @@ function extractPorts(){
 	cat extractPorts.tmp; rm extractPorts.tmp
 }
 
-# Settarget
-
+# Set Target
 function settarget(){
 	if [ $# -eq 1 ]; then
 	echo $1 > ~/.config/bin/target
@@ -99,7 +96,12 @@ function settarget(){
 	fi
 }
 
-# Set 'man' colors
+# Clear Target
+function cleartarget(){
+	echo '' > ~/.config/bin/target
+}
+
+# Set 'Man' Colors
 function man() {
     env \
     LESS_TERMCAP_mb=$'\e[01;31m' \
@@ -112,32 +114,38 @@ function man() {
     man "$@"
 }
 
-# fzf improvement
+# FZF Improvement
 function fzf-lovely(){
 
 	if [ "$1" = "h" ]; then
 		fzf -m --reverse --preview-window down:20 --preview '[[ $(file --mime {}) =~ binary ]] &&
- 	                echo {} is a binary file ||
-	                 (bat --style=numbers --color=always {} ||
-	                  highlight -O ansi -l {} ||
-	                  coderay {} ||
-	                  rougify {} ||
-	                  cat {}) 2> /dev/null | head -500'
+ 	               echo {} is a binary file ||
+	                (bat --style=numbers --color=always {} ||
+	                 highlight -O ansi -l {} ||
+	                 coderay {} ||
+	                 rougify {} ||
+	                 cat {}) 2> /dev/null | head -500'
 
 	else
-	        fzf -m --preview '[[ $(file --mime {}) =~ binary ]] &&
-	                         echo {} is a binary file ||
-	                         (bat --style=numbers --color=always {} ||
-	                          highlight -O ansi -l {} ||
-	                         coderay {} ||
-	                          rougify {} ||
-	                          cat {}) 2> /dev/null | head -500'
+	       fzf -m --preview '[[ $(file --mime {}) =~ binary ]] &&
+	                        echo {} is a binary file ||
+	                        (bat --style=numbers --color=always {} ||
+	                         highlight -O ansi -l {} ||
+	                        coderay {} ||
+	                         rougify {} ||
+	                         cat {}) 2> /dev/null | head -500'
 	fi
 }
 
+# RMK Function
 function rmk(){
 	scrub -p dod $1
 	shred -zun 10 -v $1
+}
+
+# IP Recon
+function iprecon {
+	echo "Tu IP Privada es" $(hostname -I | awk "{print $1}") 
 }
 
 # Finalize Powerlevel10k instant prompt. Should stay at the bottom of ~/.zshrc.
