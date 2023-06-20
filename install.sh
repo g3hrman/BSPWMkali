@@ -78,7 +78,7 @@ sudo cp -v $ruta/Config/polybar/fonts/* /usr/share/fonts/truetype/
 # Instalando Wallpaper de S4vitar
 
 mkdir ~/Wallpapers
-cp -v $ruta/Wallpaper/* ~/Wallpapers
+cp -v $ruta/Wallpapers/* ~/Wallpapers
 mkdir ~/ScreenShots
 
 # Copiando Archivos de Configuración
