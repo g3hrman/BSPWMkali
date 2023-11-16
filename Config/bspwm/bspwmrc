@@ -20,7 +20,7 @@ bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 
-feh --bg-fill ~/Wallpaper/nord-dark.png
+feh --bg-fill ~/Wallpapers/nord-dark.png
 
 picom &
 ~/.config/polybar/launch.sh
